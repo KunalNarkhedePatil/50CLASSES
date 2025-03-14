@@ -169,13 +169,13 @@ private:
     int iBatteryLifeInHrs;
     float fChargingTimeInHrs;
     string strWaterResistanceLevel;
-    string strFreqRes;
+    string strFrequencyResponse;
     string strAudioDriverType;
     int iAudioDriverSizeInMm;
-    string strEarpieceShape;
+    string strEarphonepieceShape;
     string strControlType;
     int iMicrophoneFormat;
-    int iBluetoothRangeInMeters;
+    int iBluetoothRangeInMr;
     vector<string> vecSpecialFeatures;
     string strCompatibleDevices;
     bool bBatteriesIncluded;
@@ -185,6 +185,124 @@ private:
     Date dtDateFirstAvailable;
     string strCountryOfOrigin;
     ProductDimension dmProductDimension;
+
+    // Constructor with initialization list
+
+    Earphone(string _strBrand, string _strModelName, string _strManufacturer, string _strConnectivityTechnology, int _iBatteryLifeInHrs,
+             float _fChargingTimeInHrs, string _strWaterResistanceLevel, string _strFrequencyResponse, string _strAudioDriverType, int _iAudioDriverSizeInMm,
+             string _strEarphonepieceShape, string _strControlType, int _iMicrophoneFormat, int _iBluetoothRangeInMeters, vector<string> _vecSpecialFeatures,
+             string _strCompatibleDevices, bool _bBatteriesIncluded, bool _bBatteriesRequired, string _strASIN, float _fCustomerReviews, Date _dtDateFirstAvailable,
+             string _strCountryOfOrigin, ProductDimension _dmProductDimension) : strBrand(_strBrand), strModelName(_strModelName), strManufacturer(_strManufacturer), strConnectivityTechnology(_strConnectivityTechnology),
+                                                                                 iBatteryLifeInHrs(_iBatteryLifeInHrs), fChargingTimeInHrs(_fChargingTimeInHrs), strWaterResistanceLevel(_strWaterResistanceLevel),
+                                                                                 strFrequencyResponse(_strFrequencyResponse), strAudioDriverType(_strAudioDriverType), iAudioDriverSizeInMm(_iAudioDriverSizeInMm), strEarphonepieceShape(_strEarphonepieceShape),
+                                                                                 strControlType(_strControlType), iMicrophoneFormat(_iMicrophoneFormat), iBluetoothRangeInMr(_iBluetoothRangeInMeters),
+                                                                                 vecSpecialFeatures(_vecSpecialFeatures), strCompatibleDevices(_strCompatibleDevices), bBatteriesIncluded(_bBatteriesIncluded), bBatteriesRequired(_bBatteriesRequired),
+                                                                                 strASIN(_strASIN), fCustomerReviews(_fCustomerReviews), dtDateFirstAvailable(_dtDateFirstAvailable), strCountryOfOrigin(_strCountryOfOrigin), dmProductDimension(_dmProductDimension)
+
+    {
+        if (iBatteryLifeInHrs <= 0)
+            throw invalid_argument("iBatteryLifeInHrs must be positive");
+        if (fChargingTimeInHrs <= 0.0)
+            throw invalid_argument("fChargingTimeInHrs must be positive");
+        if (iAudioDriverSizeInMm <= 0)
+            throw invalid_argument("iAudioDriverSizeInMm must be posotive");
+        if (iMicrophoneFormat <= 0)
+            throw invalid_argument("iMicrophoneFormat must be positive");
+        if (iBluetoothRangeInMr <= 0)
+            throw invalid_argument("iBluetoothRangeInMeters must be positive");
+        if (fCustomerReviews <= 0.0)
+            throw invalid_argument("fCustomerReviews must be positive");
+    }
+    // Getter Methods
+
+    string getBrand() const
+    {
+        return strBrand;
+    }
+    string getModelName() const
+    {
+        return strModelName;
+    }
+    string getManufacturer() const
+    {
+        return strManufacturer;
+    }
+    string getConnectivityTechnology() const
+    {
+        return strConnectivityTechnology;
+    }
+    int getBatteryLifeInHrs() const
+    {
+        return iBatteryLifeInHrs;
+    }
+    float getChargingTimeInHrs() const
+    {
+        return fChargingTimeInHrs;
+    }
+    string getWaterResistanceLevel() const
+    {
+        return strWaterResistanceLevel;
+    }
+    string getFrequencyResponse() const
+    {
+        return strFrequencyResponse;
+    }
+    int getAudioDriverSizeInMm() const
+    {
+        return iAudioDriverSizeInMm;
+    }
+    string getEarphonepieceShape() const
+    {
+        return strEarphonepieceShape;
+    }
+    string getControlType() const
+    {
+        return strControlType;
+    }
+    int getMicrophoneFormat() const
+    {
+        return iMicrophoneFormat;
+    }
+    int getBluetoothRangeInMr() const
+    {
+        return iBluetoothRangeInMr;
+    }
+    const vector<string> &getSepecialFeatures() const
+    {
+        return vecSpecialFeatures;
+    }
+    string getCompatibleDevices() const
+    {
+        return strCompatibleDevices;
+    }
+    bool getBatteriesIncluded() const
+    {
+        return bBatteriesIncluded;
+    }
+    bool getBatteriesRequired() const
+    {
+        return bBatteriesRequired;
+    }
+    string getASIN() const
+    {
+        return strASIN;
+    }
+    float getCustomerReviews() const
+    {
+        return fCustomerReviews;
+    }
+    Date getDateFirstAvailable() const
+    {
+        return dtDateFirstAvailable;
+    }
+    string getCountryOfOrigin() const
+    {
+        return strCountryOfOrigin;
+    }
+    ProductDimension getDimensions() const
+    {
+        return dmProductDimension;
+    }
 };
 int main()
 {
