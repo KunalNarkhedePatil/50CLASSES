@@ -187,7 +187,7 @@ private:
     ProductDimension dmProductDimension;
 
     // Constructor with initialization list
-
+ public:
     Earphone(string _strBrand, string _strModelName, string _strManufacturer, string _strConnectivityTechnology, int _iBatteryLifeInHrs,
              float _fChargingTimeInHrs, string _strWaterResistanceLevel, string _strFrequencyResponse, string _strAudioDriverType, int _iAudioDriverSizeInMm,
              string _strEarphonepieceShape, string _strControlType, int _iMicrophoneFormat, int _iBluetoothRangeInMeters, vector<string> _vecSpecialFeatures,
@@ -267,7 +267,7 @@ private:
     {
         return iBluetoothRangeInMr;
     }
-    const vector<string> &getSepecialFeatures() const
+    const vector<string> &getSpecialFeatures() const
     {
         return vecSpecialFeatures;
     }
@@ -299,16 +299,161 @@ private:
     {
         return strCountryOfOrigin;
     }
-    ProductDimension getDimensions() const
+    ProductDimension getProductDimensions() const
     {
         return dmProductDimension;
     }
+
+    // Settter Method
+
+    void setBrand(string &strNewBrand)
+    {
+        strBrand = strNewBrand;
+    }
+    void setModelName(string &strNewModelName)
+    {
+        strModelName = strNewModelName;
+    }
+    void setManufacturer(string &strNewManufacturer)
+    {
+        strManufacturer = strNewManufacturer;
+    }
+    void setConnectivityTechnology(string &strNewConnectivityTechnology)
+    {
+        strConnectivityTechnology = strNewConnectivityTechnology;
+    }
+    void setBatteryLifeTimeInHrs(int iNewBatteryLifeInHrs)
+    {
+        if (iNewBatteryLifeInHrs <= 0)
+            throw invalid_argument("iNewBatteryLifeTimeINHrs must be positive");
+        iBatteryLifeInHrs = iNewBatteryLifeInHrs;
+    }
+    void setChargingTimeInHrs(float fNewChargingTimeInHrs)
+    {
+        if (fNewChargingTimeInHrs <= 0.0)
+            throw invalid_argument("fNewChargingTimeInHrs must be positive");
+        fChargingTimeInHrs = fNewChargingTimeInHrs;
+    }
+    void setWaterResistanceLevel(string &strNewWaterResistanceLevel)
+    {
+        strWaterResistanceLevel = strNewWaterResistanceLevel;
+    }
+    void setFrequencyResponse(string &strNewFrequencyResponse)
+    {
+        strFrequencyResponse = strNewFrequencyResponse;
+    }
+    void setAudioDriverType(string &strNewAudioDriverType)
+    {
+        strAudioDriverType = strNewAudioDriverType;
+    }
+    void setAudioDriverSizeInMm(int iNewAudioDriverSizeInMm)
+    {
+        if (iNewAudioDriverSizeInMm <= 0)
+            throw invalid_argument("iNewAudioDriverSizeInMm must be positive");
+        iAudioDriverSizeInMm = iNewAudioDriverSizeInMm;
+    }
+    void setEarphonepieceShape(string &strNewEarphonepieceShape)
+    {
+        strEarphonepieceShape = strNewEarphonepieceShape;
+    }
+    void setControlType(string &strNewControlType)
+    {
+        strControlType = strNewControlType;
+    }
+    void setMicrophoneFormat(int iNewMicrophoneFormat)
+    {
+        if (iNewMicrophoneFormat <= 0)
+            throw invalid_argument("iNewMicrophoneFormat must be positive");
+        iMicrophoneFormat = iNewMicrophoneFormat;
+    }
+    void setBluetoothRangeInMr(int iNewBluetoothRangeInMr)
+    {
+        if (iNewBluetoothRangeInMr <= 0)
+            throw invalid_argument("iNewBluetoothRangeInMr must be positive");
+        iBluetoothRangeInMr = iNewBluetoothRangeInMr;
+    }
+    void setSpecialFeatures(vector<string> &vecNewSpecialFeatures)
+    {
+        vecSpecialFeatures = vecNewSpecialFeatures;
+    }
+    void setCompatibleDevices(string &strNewCompatibleDevices)
+    {
+        strCompatibleDevices = strNewCompatibleDevices;
+    }
+    void setBatteriesIncluded(bool bNewBatteriesIncluded)
+    {
+        bBatteriesIncluded = bNewBatteriesIncluded;
+    }
+    void setBatteriesRequired(bool bNewBatteriesRequired)
+    {
+        bBatteriesRequired = bNewBatteriesRequired;
+    }
+    string setASIN(string &strNewASIN)
+    {
+        strASIN = strNewASIN;
+    }
+    void setCustomerReviews(float fNewCustomerReviews)
+    {
+        if (fNewCustomerReviews <= 0.0)
+            throw invalid_argument("fNewCustomerReviews must be positive");
+        fCustomerReviews = fNewCustomerReviews;
+    }
+    void setDate(Date dtNewFirstAvailable)
+    {
+        dtDateFirstAvailable = dtNewFirstAvailable;
+    }
+    void setCountryOfOrigin(string &strNewCountryOfOrigin)
+    {
+        strCountryOfOrigin = strNewCountryOfOrigin;
+    }
+    void setProductDimension(ProductDimension dmNewProductDimension)
+    {
+        dmProductDimension = dmProductDimension;
+    }
+    void DisplayDetails()
+    {
+        cout << "Brand :" << strBrand << endl;
+        cout << "Model Name :" << strModelName << endl;
+        cout << "Manufacturer :" << strManufacturer << endl;
+        cout << "Connectivity Technology :" << strConnectivityTechnology << endl;
+        cout << "Battery Life In Hrs :" << iBatteryLifeInHrs << endl;
+        cout << "Charging Time Time Hrs :" << fChargingTimeInHrs << endl;
+        cout << "Water Resistance Level :" << strWaterResistanceLevel << endl;
+        cout << "Frequency Response :" << strFrequencyResponse << endl;
+        cout << "Audio Driver Type :" << iAudioDriverSizeInMm << endl;
+        cout << "Earphonepiece Shape :" << strEarphonepieceShape << endl;
+        cout << "Control Type :" << strControlType << endl;
+        cout << "Microphone Format :" << iMicrophoneFormat << endl;
+        cout << "Bluetooth Range In Meters :" << iBluetoothRangeInMr << endl;
+        cout << "Special Features :";
+
+        for (vector<string>::iterator iter = vecSpecialFeatures.begin(); iter != vecSpecialFeatures.end(); ++iter)
+        {
+            cout << *iter << ",";
+        }
+
+        cout << "Compatible Devices :" << strCompatibleDevices << endl;
+        cout << "Batteries Included :" << bBatteriesIncluded << endl;
+        cout << "Batteries Required :" << bBatteriesRequired << endl;
+        cout << "ASIN :" << strASIN << endl;
+        cout << "Customer Reviews :" << fCustomerReviews << endl;
+        cout << "Date First Available :" << dtDateFirstAvailable.getDay() << "/" << dtDateFirstAvailable.getMonth() << "/" << dtDateFirstAvailable.getYear() << endl;
+        cout << "Country Of Origin :" << strCountryOfOrigin << endl;
+        cout << "Product Dimensions :" << dmProductDimension.getLength() << "*" << dmProductDimension.getWidth() << "*" << dmProductDimension.getHeight() << endl;
+    }
 };
+
+// CLIENT SIDE
 int main()
 {
-    ProductDimension(1.0, 1.0, 45.0, 30.0);
-    Date(1, 3, 2024);
-    // Earphone obj("Boat","Rockerz 255 Pro+",)
-
+    ProductDimension prodDimensions(1.0, 1.0, 45.0, 30.0);
+    Date date(1, 3, 2024);
+    vector<string> vecSpecialFeatures{
+        string("Voice Assistant"),
+        string("ASAP Charge"),
+        string("Dual Pairing")};
+    Earphone obj("Boat", "Rockerz 255 Pro+", "Imagine Marketing Ltd, Boat", "Bluetooth 5.0", 60, 1.5, "IPX7 (Water Resistant)", "20Hz - 20kHz", "Dynamic Driver", 10, "Bud", "Voice Control",
+                 1, 10, vecSpecialFeatures, "Bluetooth Devices", true, true, "B08TV2P1N8", 4.0, date, "China", prodDimensions);
+    obj.DisplayDetails();
     return 0;
 }
